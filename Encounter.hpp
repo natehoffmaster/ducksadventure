@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include <map>
+#include <limits>
 #include "Fighter.hpp"
 
 using namespace std;
@@ -17,6 +18,7 @@ class Encounter{
 		map<string, string>::iterator it;
 		Fighter* order = new Fighter[2];
 		string attackName;
+		string attackType;
 		while(mc.health > 0 && op.health > 0){
 			//relays stats to player
 			cout << "Your stats: " << endl << endl <<
@@ -43,16 +45,37 @@ class Encounter{
 			}
 
 			//choose attack type
-			cout << endl << "What would you like to do?" << endl;
-			map<string, string>::iterator it;
-			int count = 1;
-			for(it = mc.attacks.begin(); it != mc.attacks.end(); it++){
-				cout << count << ". " << it->second << endl;
-				count++;
-			}
+			while(true){
+				cout << endl << "What would you like to do?" << endl;
+				map<string, string>::iterator it;
+				int count = 1;
+				for(it = mc.attacks.begin(); it != mc.attacks.end(); it++){
+					cout << count << ". " << it->second << endl;
+					count++;
+				}
 
-			cout << endl;
-			cin >> attackName;
+				cout << endl;
+				cin >> attackName;
+				cin.ignore(numeric_limits<streamsize>::max(),'\n');
+
+				count = 0;
+				for(it = mc.attacks.begin(); it != mc.attacks.end(); it++){
+					if(it->second == attackName){
+						attackType = it->first;
+						break;
+					}
+					else{
+						count++;
+					}
+				}
+				//TODO: Fix this fucking thing
+				if(count == 6){
+					break;
+				}
+				else{
+					cout << "Invalid move. Choose a different move." << endl;
+				}
+			}
 
 			//determines who attacks first based on the order of the array
 			if(mc.speed > op.speed){
