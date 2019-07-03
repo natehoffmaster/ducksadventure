@@ -103,8 +103,8 @@ class Fighter{
             health += roll * sanity * 5;
             return 0;
         }
-        else{
-
+        else if(attackType == "item"){
+            return 0;
         }
         return damage;
     }
