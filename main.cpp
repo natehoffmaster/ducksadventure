@@ -33,8 +33,48 @@ int main(){
     attacks["heal"] = "Eat Up";
     attacks["item"] = "Use an item";
 
-    //default vector of items
-    vector<Item> items;
+    //initialize objects for all items with a quantity of zero
+    AcaiBerry acaiBerry = AcaiBerry();
+    Banana banana = Banana();
+    Blueberry blueberry = Blueberry();
+    Cowberry cowberry = Cowberry();
+
+    Sword sword = Sword();
+
+    //default vector of items, including object, name, description, and quantity
+    pair<string, int> acaiBerryDesQ = make_pair("High in protein. Increases might by 3.", 0);
+    pair<string, int> bananaDesQ = make_pair("Sweet and flavorful. Increases health by 200.", 0);
+    pair<string, int> blueberryDesQ = make_pair("Sweet and juicy. Increases health by 200.", 0);
+    pair<string, int> cowberryDesQ = make_pair("Moo.", 0);
+
+    pair<string, int> swordDesQ = make_pair("No matter the might of the user, it always attacks with 10 might and speed is increased by 1. However, the sword can only be used five times before it breaks.", 0);
+
+
+    pair<string, pair<string, int>> acaiBerryNDesQ = make_pair("Acai Berry", acaiBerryDesQ);
+    pair<string, pair<string, int>> bananaNDesQ = make_pair("Banana", bananaDesQ);
+    pair<string, pair<string, int>> blueberryNDesQ = make_pair("Blueberry", blueberryDesQ);
+    pair<string, pair<string, int>> cowberryNDesQ = make_pair("Cowberry", cowberryDesQ);
+
+    pair<string, pair<string, int>> swordNDesQ = make_pair("Sword", swordDesQ);
+
+
+    pair<Item, pair<string, pair<string, int>>> acaiBerryONDesQ = make_pair(acaiBerry, acaiBerryNDesQ);
+    pair<Item, pair<string, pair<string, int>>> blueberryONDesQ = make_pair(blueberry, blueberryNDesQ);
+    pair<Item, pair<string, pair<string, int>>> bananaONDesQ = make_pair(banana, bananaNDesQ);
+    pair<Item, pair<string, pair<string, int>>> cowberryONDesQ = make_pair(cowberry, cowberryNDesQ);
+
+    pair<Item, pair<string, pair<string, int>>> swordONDesQ = make_pair(sword, swordNDesQ);
+
+
+    vector<pair<Item, pair<string, pair<string, int>>>> items = vector<pair<Item, pair<string, pair<string, int>>>>();
+
+    items.push_back(acaiBerryONDesQ);
+    items.push_back(blueberryONDesQ);
+    items.push_back(bananaONDesQ);
+    items.push_back(cowberryONDesQ);
+
+    items.push_back(swordONDesQ);
+
 
     //test fighters
     Fighter mc = Fighter(1000, 5, 5, 5, 5, attacks, "mc", "Main", items);

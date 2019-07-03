@@ -19,9 +19,9 @@ class Fighter{
     int health, speed, stamina, sanity, might;
     map<string, string> attacks;
 	string id, name;
-    vector<Item> items;
+    vector<pair<Item, pair<string, pair<string, int>>>> items;
 
-    Fighter(int h, int sp, int st, int sa, int m, map<string, string> a, string identification, string n, vector<Item> i){
+    Fighter(int h, int sp, int st, int sa, int m, map<string, string> a, string identification, string n, vector<pair<Item, pair<string, pair<string, int>>>> i){
         health = h;
     	speed = sp;
     	stamina = st;

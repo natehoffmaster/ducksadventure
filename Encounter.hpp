@@ -9,7 +9,7 @@ class Encounter{
 	public:
 
 	Encounter(){
-		
+
 	}
 
 	//all code relevant to a fight between two parties
@@ -32,6 +32,11 @@ class Encounter{
 			for(it = mc.attacks.begin(); it != mc.attacks.end(); it++){
 				cout << "\t" << it->second << endl;
 			}
+
+			/*cout << "Your items: " << endl << endl;
+			for(Item i : mc.items){
+				cout << i.type << i.quantity;
+			}*/
 
 			//determines who attacks first
 			if(mc.speed > op.speed){

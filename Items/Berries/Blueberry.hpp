@@ -2,14 +2,15 @@
 #include <string>
 #include "../../Item.hpp"
 #include "../Berry.hpp"
-#include "../../Fighter.hpp";
+#include "../../Fighter.hpp"
 
 class Blueberry : public Berry{
+	public:
+
 	int quantity;
 	string name, description;
 
-	AcaiBerry(int q){
-		quantity = q;
+	Blueberry(){
 		name = "Blueberry";
 		description = "Sweet and juicy. Increases health by 200.";
 	}

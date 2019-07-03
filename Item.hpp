@@ -10,6 +10,7 @@
 class Item{
 	public:
 
+	int quantity;
 	Item(){
 
 	}
