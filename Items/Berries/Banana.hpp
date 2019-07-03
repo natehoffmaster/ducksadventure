@@ -7,12 +7,8 @@
 class Banana : public Berry{
 	public:
 
-	int quantity;
-	string name, description;
-
 	Banana(){
-		name = "Banana";
-		description = "Sweet and flavorful. Increases health by 200.";
+
 	}
 
 	void use(Fighter c){

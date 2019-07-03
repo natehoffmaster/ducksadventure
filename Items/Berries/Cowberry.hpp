@@ -7,12 +7,8 @@
 class Cowberry : public Berry{
 	public:
 
-	int quantity;
-	string name, description;
-
 	Cowberry(){
-		name = "Cowberry";
-		description = "Moo.";
+
 	}
 
 	void use(Fighter c){
