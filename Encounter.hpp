@@ -16,6 +16,7 @@ class Encounter{
 	void fight(Fighter mc, Fighter op){
 		map<string, string>::iterator it;
 		Fighter* order = new Fighter[2];
+		string attackName;
 		while(mc.health > 0 && op.health > 0){
 			//relays stats to player
 			cout << "Your stats: " << endl << endl <<
@@ -41,7 +42,19 @@ class Encounter{
 				}
 			}
 
-			//determines who attacks first
+			//choose attack type
+			cout << endl << "What would you like to do?" << endl;
+			map<string, string>::iterator it;
+			int count = 1;
+			for(it = mc.attacks.begin(); it != mc.attacks.end(); it++){
+				cout << count << ". " << it->second << endl;
+				count++;
+			}
+
+			cout << endl;
+			cin >> attackName;
+
+			//determines who attacks first based on the order of the array
 			if(mc.speed > op.speed){
 				order[0] = mc;
 				order[1] = op;
