@@ -33,10 +33,13 @@ class Encounter{
 				cout << "\t" << it->second << endl;
 			}
 
-			/*cout << "Your items: " << endl << endl;
-			for(Item i : mc.items){
-				cout << i.type << i.quantity;
-			}*/
+			//iterates through and relays player's items if the quantity of item is grater than 0.
+			cout << endl << "Your items: " << endl << endl;
+			for(int i = 0; i < mc.items.size(); i++){
+				if(mc.items[1].second.second.second > 0){
+					cout << "\t" << mc.items[i].second.second.second << ": "<< mc.items[i].second.first << ": " << mc.items[i].second.second.first << endl;
+				}
+			}
 
 			//determines who attacks first
 			if(mc.speed > op.speed){
