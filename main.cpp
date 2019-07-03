@@ -47,7 +47,7 @@ int main(){
     pair<string, int> blueberryDesQ = make_pair("Sweet and juicy. Increases health by 200.", 0);
     pair<string, int> cowberryDesQ = make_pair("Moo.", 0);
 
-    pair<string, int> swordDesQ = make_pair("No matter the might of the user, it always attacks with 10 might and speed is increased by 1. However, the sword can only be used five times before it breaks.", 0);
+    pair<string, int> swordDesQ = make_pair("No matter the might of the user, it always attacks with 8 might and speed is increased by 1.", 0);
 
 
     pair<string, pair<string, int>> acaiBerryNDesQ = make_pair("Acai Berry", acaiBerryDesQ);
