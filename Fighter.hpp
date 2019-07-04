@@ -114,23 +114,18 @@ class Fighter{
         health -= damage;
     }
 
-    //combines 3 previously declared methods to attack an opponent but returns false if the attack name doesn't exist
-    bool attack(Fighter op, string attackName){
+    //combines 3 previously declared methods to attack an opponent
+    void attack(Fighter op, string attackName, int roll){
         //search attacks for one matching the input
         map<string, string>::iterator it;
 
         for (it = attacks.begin(); it != attacks.end(); it++){
             if(it->second == attackName){
-                int roll = rolld20();
-                cout << "The roll was " << roll << "!" << endl;
                 string attackType = it->second;
                 int damage = calcDamage(roll, attackType);
                 op.dockHealth(damage);
-                return true;
             }
         }
-        //returns false only if the user's input is not one of the character's attack names
-        return false;
     }
 };
 
