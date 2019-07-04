@@ -14,6 +14,7 @@ class Item{
 	Item(){
 
 	}
+	//TODO: Potentially add subclass methods
 };
 
 #endif
