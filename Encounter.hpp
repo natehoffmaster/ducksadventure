@@ -55,8 +55,7 @@ class Encounter{
 				}
 
 				cout << endl;
-				cin >> attackName;
-				cin.ignore(numeric_limits<streamsize>::max(),'\n');
+				getline(cin, attackName);
 
 				count = 0;
 				for(it = mc.attacks.begin(); it != mc.attacks.end(); it++){
@@ -69,7 +68,7 @@ class Encounter{
 					}
 				}
 				//TODO: Fix this fucking thing
-				if(count == 6){
+				if(count < 6){
 					break;
 				}
 				else{
