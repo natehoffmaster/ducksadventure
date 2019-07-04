@@ -1,3 +1,6 @@
+#ifndef _Blueberry_hpp
+#define _Blueberry_hpp
+
 #include <iostream>
 #include <string>
 #include "../../Item.hpp"
@@ -16,3 +19,5 @@ class Blueberry : public Berry{
 		cout << "Your health was increased by 200!" << endl << endl;
 	}
 };
+
+#endif

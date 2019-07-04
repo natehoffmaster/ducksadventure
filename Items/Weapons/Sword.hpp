@@ -1,3 +1,6 @@
+#ifndef _Sword_hpp
+#define _Sword_hpp
+
 #include <iostream>
 #include <string>
 #include "../../Item.hpp"
@@ -18,3 +21,5 @@ class Sword : public Weapon{
 		mc.speed++;
 	}
 };
+
+#endif

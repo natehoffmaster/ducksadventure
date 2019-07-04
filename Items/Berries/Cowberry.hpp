@@ -1,3 +1,6 @@
+#ifndef _Cowberry_hpp
+#define _Cowberry_hpp
+
 #include <iostream>
 #include <string>
 #include "../../Item.hpp"
@@ -16,3 +19,5 @@ class Cowberry : public Berry{
 		cout << "Moo." << endl << endl;
 	}
 };
+
+#endif
