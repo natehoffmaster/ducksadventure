@@ -1,7 +1,6 @@
 #include <iostream>
 #include <string>
 #include <map>
-#include <limits>
 #include "Fighter.hpp"
 
 using namespace std;
@@ -17,8 +16,8 @@ class Encounter{
 	void fight(Fighter mc, Fighter op){
 		map<string, string>::iterator it;
 		Fighter* order = new Fighter[2];
-		string attackName;
-		string attackType;
+		string attackName, attackType, first, second, opAttackName, opAttackType, itemUse;
+		int i, randSelect, count;
 		while(mc.health > 0 && op.health > 0){
 			//relays stats to player
 			cout << "Your stats: " << endl << endl <<
@@ -38,8 +37,8 @@ class Encounter{
 
 			//iterates through and relays player's items if the quantity of item is grater than 0.
 			cout << endl << "Your items: " << endl << endl;
-			for(int i = 0; i < mc.items.size(); i++){
-				if(mc.items[1].second.second.second > 0){
+			for(i = 0; i < mc.items.size(); i++){
+				if(mc.items[i].second.second.second > 0){
 					cout << "\t" << mc.items[i].second.second.second << ": "<< mc.items[i].second.first << ": " << mc.items[i].second.second.first << endl;
 				}
 			}
@@ -48,7 +47,7 @@ class Encounter{
 			while(true){
 				cout << endl << "What would you like to do?" << endl;
 				map<string, string>::iterator it;
-				int count = 1;
+				count = 1;
 				for(it = mc.attacks.begin(); it != mc.attacks.end(); it++){
 					cout << count << ". " << it->second << endl;
 					count++;
@@ -67,7 +66,8 @@ class Encounter{
 						count++;
 					}
 				}
-				//TODO: Fix this fucking thing
+
+				//try again if invalid move
 				if(count < 6){
 					break;
 				}
@@ -75,6 +75,17 @@ class Encounter{
 					cout << "Invalid move. Choose a different move." << endl;
 				}
 			}
+
+			//randomly selects an attack for the opponent
+			randSelect = rand() % op.attacks.size();
+			i = 0;
+			for(it = op.attacks.begin(); it != op.attacks.end(); it++){
+				if(randSelect == i){
+					opAttackName = it->second;
+					opAttackType = it->first;
+				}
+			}
+
 
 			//determines who attacks first based on the order of the array
 			if(mc.speed > op.speed){
@@ -86,14 +97,43 @@ class Encounter{
 				order[1] = mc;
 			}
 			else{
-				int r = rand() % 2;
-				if(!r){
+				randSelect = rand() % 2;
+				if(!randSelect){
 					order[0] = mc;
 					order[1] = op;
 				}
 				else{
 					order[0] = op;
 					order[1] = mc;
+				}
+			}
+
+			//rolls d20 and attacks based on fighters' stats
+			if(order[0].id == "mc"){
+				//only execute attack if an item was not used
+				if(attackType != "item"){
+					int firstRoll = mc.rolld20();
+					cout << endl << "You rolled a " << firstRoll << "!" << endl << endl;
+					mc.attack(op, attackName, firstRoll);
+				}
+				//if an item is used, the item will decreases its quantity by one and use itself
+				else{
+					cout << endl << "Your items: " << endl << endl;
+					for(int i = 0; i < mc.items.size(); i++){
+						if(mc.items[i].second.second.second > 0){
+							cout << "\t" << mc.items[i].second.second.second << ": "<< mc.items[i].second.first << ": " << mc.items[i].second.second.first << endl;
+						}
+					}
+					cout << endl << "Which item would you like to use?";
+					getline(cin, itemUse);
+					count = 0;
+					for(i = 0; i < mc.items.size(); i++){
+						/*if(mc.items[i].second.first == itemUse){
+							mc.items[i].first.use();
+						}*/
+
+						//TODO: Add usage capability
+					}
 				}
 			}
 		}
