@@ -2,6 +2,17 @@
 #include <string>
 #include <map>
 #include "Fighter.hpp"
+#include "Item.hpp"
+
+#include "Items/Berry.hpp"
+#include "Items/Weapon.hpp"
+
+#include "Items/Berries/AcaiBerry.hpp"
+#include "Items/Berries/Banana.hpp"
+#include "Items/Berries/Blueberry.hpp"
+#include "Items/Berries/Cowberry.hpp"
+
+#include "Items/Weapons/Sword.hpp"
 
 using namespace std;
 
@@ -18,6 +29,7 @@ class Encounter{
 		Fighter* order = new Fighter[2];
 		string attackName, attackType, first, second, opAttackName, opAttackType, itemUse;
 		int i, randSelect, count;
+
 		while(mc.health > 0 && op.health > 0){
 			//relays stats to player
 			cout << "Your stats: " << endl << endl <<
@@ -128,9 +140,33 @@ class Encounter{
 					getline(cin, itemUse);
 					count = 0;
 					for(i = 0; i < mc.items.size(); i++){
-						/*if(mc.items[i].second.first == itemUse){
-							mc.items[i].first.use();
-						}*/
+						if(mc.items[i].second.first == itemUse){
+							Item item;
+
+							if(itemUse == "Acai Berry"){
+								AcaiBerry* useItem = (AcaiBerry*) &item;
+								useItem->use(mc);
+							}
+							if(itemUse == "Banana"){
+								Banana* useItem = (Banana*) &item;
+								useItem->use(mc);
+							}
+							if(itemUse == "Blueberry"){
+								Blueberry* useItem = (Blueberry*) &item;
+								useItem->use(mc);
+							}
+							if(itemUse == "Cowberry"){
+								Cowberry* useItem = (Cowberry*) &item;
+								useItem->use(mc);
+							}
+
+							if(itemUse == "Sword"){
+								Sword* useItem = (Sword*) &item;
+								useItem->use(mc, op);
+							}
+
+							break;
+						}
 
 						//TODO: Add usage capability
 					}
